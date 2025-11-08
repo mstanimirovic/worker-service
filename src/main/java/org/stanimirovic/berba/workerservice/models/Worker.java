@@ -21,7 +21,11 @@ public class Worker {
 
     @Column(nullable = false)
     private String name;
+
+    @Column(unique = true, nullable = false)
     private String phone;
+
+    @Column(unique = true)
     private String email;
 
     private String description;
