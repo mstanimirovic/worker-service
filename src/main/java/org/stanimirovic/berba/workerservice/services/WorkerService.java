@@ -7,6 +7,8 @@ import org.stanimirovic.berba.workerservice.exceptions.WorkerNotAssociatedWithUs
 import org.stanimirovic.berba.workerservice.exceptions.WorkerNotFoundException;
 import org.stanimirovic.berba.workerservice.mappers.WorkerMapper;
 import org.stanimirovic.berba.workerservice.models.Worker;
+import org.stanimirovic.berba.workerservice.models.WorkerPaymentType;
+import org.stanimirovic.berba.workerservice.models.WorkerRole;
 import org.stanimirovic.berba.workerservice.repositories.WorkerRepository;
 
 import java.util.List;
@@ -47,5 +49,17 @@ public class WorkerService {
     public void deleteWorker(final UUID userId, final UUID workerId) {
         Worker worker = verifyWorkerAndUserRelation(userId, workerId);
         workerRepository.delete(worker);
+    }
+
+    public WorkerResponseDTO updateWorker(final UUID userId, final UUID workerId, final WorkerRequestDTO dto) {
+        Worker worker = verifyWorkerAndUserRelation(userId, workerId);
+        worker.setName(dto.getName());
+        worker.setPhone(dto.getPhone());
+        worker.setEmail(dto.getEmail());
+        worker.setDescription(dto.getDescription());
+        worker.setPaymentType(WorkerPaymentType.valueOf(dto.getPaymentType()));
+        worker.setRole(WorkerRole.valueOf(dto.getRole()));
+        Worker updatedWorker = workerRepository.save(worker);
+        return WorkerMapper.toDTO(updatedWorker);
     }
 }

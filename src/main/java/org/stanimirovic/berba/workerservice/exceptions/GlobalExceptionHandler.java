@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
         Map<String, String> errors = new HashMap<>();
         log.warn("Duplicate entity error: {}", ex.getMessage());
-        errors.put("message", "Worker with this phone number already exists");
+        errors.put("message", "Worker with this phone number or email address already exists");
         return ResponseEntity.badRequest().body(errors);
     }
 

@@ -35,6 +35,11 @@ public class WorkerController {
         return ResponseEntity.ok(workerService.createWorker(userId, dto));
     }
 
+    @PutMapping("/{workerId}")
+    public ResponseEntity<WorkerResponseDTO> updateWorker(@PathVariable UUID userId, @PathVariable UUID workerId, @RequestBody WorkerRequestDTO dto) {
+        return ResponseEntity.ok(workerService.updateWorker(userId, workerId, dto));
+    }
+
     @DeleteMapping("/{workerId}")
     public ResponseEntity<Void> deleteWorker(@PathVariable UUID userId, @PathVariable UUID workerId) {
         workerService.deleteWorker(userId, workerId);
