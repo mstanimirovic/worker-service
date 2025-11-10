@@ -3,9 +3,6 @@ package org.stanimirovic.berba.workerservice.mappers;
 import org.stanimirovic.berba.workerservice.dto.WorkerRequestDTO;
 import org.stanimirovic.berba.workerservice.dto.WorkerResponseDTO;
 import org.stanimirovic.berba.workerservice.models.Worker;
-import org.stanimirovic.berba.workerservice.models.WorkerPaymentType;
-import org.stanimirovic.berba.workerservice.models.WorkerRole;
-
 import java.time.LocalDateTime;
 
 public class WorkerMapper {
@@ -30,8 +27,8 @@ public class WorkerMapper {
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
                 .description(dto.getDescription())
-                .paymentType(WorkerPaymentType.valueOf(dto.getPaymentType()))
-                .role(WorkerRole.valueOf(dto.getRole()))
+                .paymentType(dto.getPaymentType())
+                .role(dto.getRole())
                 .added(LocalDateTime.now())
                 .userId(dto.getUserId())
                 .build();

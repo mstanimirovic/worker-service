@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.stanimirovic.berba.workerservice.models.WorkerPaymentType;
+import org.stanimirovic.berba.workerservice.models.WorkerRole;
 
 import java.util.UUID;
 
@@ -30,8 +32,8 @@ public class WorkerRequestDTO {
     @Size(min = 1, max = 100)
     private String description;
 
-    private String paymentType;
-    private String role;
+    private WorkerPaymentType paymentType;
+    private WorkerRole role;
 
     @NotNull
     private UUID userId;

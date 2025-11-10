@@ -36,7 +36,7 @@ public class WorkerController {
     }
 
     @PutMapping("/{workerId}")
-    public ResponseEntity<WorkerResponseDTO> updateWorker(@PathVariable UUID userId, @PathVariable UUID workerId, @RequestBody WorkerRequestDTO dto) {
+    public ResponseEntity<WorkerResponseDTO> updateWorker(@PathVariable UUID userId, @PathVariable UUID workerId, @Valid @RequestBody WorkerRequestDTO dto) {
         return ResponseEntity.ok(workerService.updateWorker(userId, workerId, dto));
     }
 
